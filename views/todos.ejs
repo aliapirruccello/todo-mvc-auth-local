@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
+<%- include('../partials/head') %>
 <body>
-    <h1>Todos</h1>
+    <%- include('../partials/header') %>
+    <div class="container">
+    <h1>My Bookshelf</h1>
+    <h3>Welcome, <%= user.userName  %></h3>
+    <h2>Books Currently Reading</h2>
     <ul>
     <% todos.forEach( el => { %>
             <li class='todoItem' data-id='<%=el._id%>'>
@@ -18,14 +14,28 @@
     <% }) %>    
     </ul>
 
-    <h2><%= user.userName %> has <%= left %> things left to do.</h2>
+    <h2><%= user.userName %> has <%= left %> book(s) left to read.</h2>
 
     <form action="/todos/createTodo" method='POST'>
-        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+        <input type="text" placeholder="Enter Book Title" name='todoItem'>
         <input type="submit">
     </form>
 
-    <a href="/logout">Logout</a>
+    <h2>Books Completed Reading</h2>
+    <ul>
+    <% todos.forEach( el => { %>
+            <li class='todoItem' data-id='<%=el._id%>'>
+                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                <span class='del'> Delete </span>
+            </li>
+    <% }) %>    
+    </ul>
+
+    <li><a class="btn btn-outline-dark me-2" href="/logout" !important>Logout</a>
+
+    </div>
+    
+    <!-- <a href="/logout">Logout</a> -->
 
     <script src="js/main.js"></script>
 </body>

@@ -1,10 +1,23 @@
 h1{
-    color: red;
+    color: rgb(14, 25, 233);
 }
 .completed{
-    text-decoration: line-through;
+    text-decoration: underline-dotted;
     color: gray;
 }
 .not{
     text-decoration: underline;
 }
+
+.title {
+    font-size: 50px;
+}
+
+li.btn  {
+    list-style: none;
+}
+
+.todoItem {
+    list-style: none;
+}
+
